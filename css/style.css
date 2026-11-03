@@ -1,0 +1,578 @@
+/* ==========================================================================
+   Biblioteca Digital UniFECAF - Folha de Estilos Principal (CSS3 Puro)
+   Paleta institucional, Layout Responsivo e Acessibilidade (WCAG AA)
+   ========================================================================== */
+
+:root {
+  /* Cores Institucionais UniFECAF */
+  --color-primary: #002244;       /* Azul marinho profundo institucional */
+  --color-primary-light: #0d3b66; /* Tom intermediário de suporte */
+  --color-accent: #00a8e8;        /* Ciano elétrico / destaque para botões e links */
+  --color-accent-hover: #0084b6;  /* Variação escura para hover */
+
+  /* Cores Neutras de Estrutura e Superfície */
+  --color-dark-bg: #1e1e1e;       /* Cinza escuro reproduzindo o wireframe */
+  --color-dark-surface: #2b2b2b;  /* Cinza para cartões e caixas de livros */
+  --color-dark-black: #121212;    /* Fundo preto para separação de blocos */
+  --color-light-bg: #ececec;      /* Cinza claro do bloco de rodapé/contato */
+  --color-white: #ffffff;
+  
+  /* Cores de Texto */
+  --text-primary-dark: #f0f0f0;   /* Texto claro sobre fundo escuro */
+  --text-muted-dark: #b8b8b8;     /* Subtítulos sobre fundo escuro */
+  --text-primary-light: #1a1a1a;  /* Texto escuro sobre fundo claro */
+  --text-muted-light: #4a4a4a;    /* Texto secundário sobre fundo claro */
+
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Transições e Bordas */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --transition-fast: 0.25s ease-in-out;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------------- Reset e Configurações Base ---------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-dark-bg);
+  color: var(--text-primary-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------- Utilitários de Layout ---------------- */
+.container {
+  width: 90%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.img-responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.rounded {
+  border-radius: var(--radius-md);
+}
+
+.shadow {
+  box-shadow: var(--shadow-card);
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-white { color: var(--color-white); }
+.text-dark { color: var(--text-primary-light); }
+
+.section-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+/* Sublinhado decorativo institucional */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-accent);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.text-center.section-title::after {
+  margin: 8px auto 0 auto;
+}
+
+/* ---------------- Cabeçalho & Barra de Navegação ---------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-primary);
+  border-bottom: 2px solid var(--color-accent);
+  padding: 0.85rem 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: 0.5px;
+}
+
+.logo-accent {
+  color: var(--color-accent);
+}
+
+.logo-sub {
+  font-size: 0.85rem;
+  font-weight: 400;
+  background: var(--color-primary-light);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+  padding: 0.4rem 0.2rem;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-accent);
+}
+
+/* Indicador ativo de link */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+/* ---------------- Botões Padronizados ---------------- */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: #555555;
+  color: var(--color-white);
+  border: none;
+  width: 100%;
+  padding: 0.6rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* ---------------- Seção 1: Hero Principal ---------------- */
+.hero-section {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #06192e 100%);
+  padding: 4.5rem 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(0, 168, 232, 0.15);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  color: var(--color-white);
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  color: #cfd8dc;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-media img {
+  max-height: 380px;
+  width: 100%;
+}
+
+/* ---------------- Seção 2: Sobre a Nossa Biblioteca ---------------- */
+.about-section {
+  background-color: #383838; /* Cinza intermediário do protótipo */
+  padding: 4.5rem 0;
+}
+
+.about-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.about-col p {
+  color: var(--text-primary-dark);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.about-col-media img {
+  height: 250px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.about-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.mini-card {
+  background-color: #4a4a4a;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.mini-card:hover {
+  transform: translateY(-4px);
+}
+
+.mini-card img {
+  height: 160px;
+}
+
+.mini-card-label {
+  padding: 0.65rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--color-white);
+}
+
+/* ---------------- Seção 3: Banner Intermediário ---------------- */
+.banner-highlight-section {
+  background-color: var(--color-dark-bg);
+  padding: 3rem 0;
+}
+
+.highlight-wrapper img {
+  max-height: 380px;
+  width: 100%;
+  border: 1px solid #444;
+}
+
+/* ---------------- Seção 4: Nossos Livros ---------------- */
+.books-section {
+  background-color: #383838;
+  padding: 4.5rem 0;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.book-card {
+  background-color: #e0e0e0; /* Card claro para alto contraste */
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.book-cover {
+  width: 100%;
+  height: 190px;
+  background-color: #777;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.book-cover img {
+  height: 100%;
+}
+
+.book-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary-light);
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.book-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1; /* Alinha os botões na mesma altura */
+}
+
+/* ---------------- Seção 5: As Unidades ---------------- */
+.units-section {
+  background-color: var(--color-dark-black);
+  padding: 4.5rem 0;
+}
+
+.units-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.unit-item {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2.5rem;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-accent);
+}
+
+.unit-media img {
+  height: 220px;
+}
+
+.unit-info h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
+}
+
+.unit-info p {
+  color: var(--text-muted-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+/* ---------------- Seção 6: Contatos ---------------- */
+.contact-section {
+  background-color: var(--color-light-bg);
+  padding: 4.5rem 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.contact-info p {
+  color: var(--text-muted-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-details {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details li {
+  color: var(--text-primary-light);
+  font-size: 0.92rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.contact-details strong {
+  color: var(--color-primary);
+}
+
+.contact-support-note {
+  font-size: 0.85rem !important;
+  font-style: italic;
+  color: #666 !important;
+}
+
+.contact-media img {
+  max-height: 320px;
+}
+
+/* ---------------- Rodapé ---------------- */
+.footer {
+  background-color: var(--color-primary);
+  color: #9ca3af;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid #0d3b66;
+}
+
+/* ==========================================================================
+   Responsividade (Mobile First & Breakpoints)
+   ========================================================================== */
+
+/* Telas Médias / Tablets (<= 992px) */
+@media (max-width: 992px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-text p {
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .about-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-col-media {
+    order: -1;
+  }
+
+  .about-bottom-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .unit-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Telas Pequenas / Smartphones (<= 640px) */
+@media (max-width: 640px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nav-menu {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.95rem;
+  }
+
+  .about-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
